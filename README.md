@@ -1,27 +1,60 @@
-# Smart Air Monitoring System - SQL Schema
+# Smart Air Monitoring System
 
-This repository contains the SQL schema for the Smart Air Monitoring System project, which uses gas and humidity sensors to monitor environmental conditions.
+The **Smart Air Monitoring System** is designed to monitor environmental conditions using gas and humidity sensors. This system helps track air quality and humidity levels, providing valuable data for analysis and decision-making.
 
-## Tables
+## Project Overview
 
-- **Sensors**: Stores basic information about each sensor.
-- **GasSensorData**: Stores gas level readings.
-- **HumiditySensorData**: Stores humidity and temperature readings.
+The project consists of:
+- **Gas Sensors**: Measure the concentration of gases (e.g., CO2).
+- **Humidity Sensors**: Measure humidity levels and optionally temperature.
+
+## SQL Schema
+
+The SQL schema includes the following tables:
+
+- **Sensors**: Contains basic information about each sensor, including its name, type (Gas or Humidity), and operational status.
+- **GasSensorData**: Records gas level readings from gas sensors.
+- **HumiditySensorData**: Records humidity and temperature readings from humidity sensors.
+
+### Tables
+
+- **Sensors**: 
+  - `sensor_id`: Unique identifier for each sensor.
+  - `sensor_name`: Name or label of the sensor.
+  - `sensor_type`: Type of sensor (Gas or Humidity).
+  - `status`: Operational status of the sensor (Active or Inactive).
+
+- **GasSensorData**: 
+  - `data_id`: Unique identifier for each gas data entry.
+  - `sensor_id`: Foreign key linking to the `Sensors` table.
+  - `recorded_at`: Timestamp of the data entry.
+  - `gas_level`: Gas concentration measurement.
+
+- **HumiditySensorData**: 
+  - `data_id`: Unique identifier for each humidity data entry.
+  - `sensor_id`: Foreign key linking to the `Sensors` table.
+  - `recorded_at`: Timestamp of the data entry.
+  - `humidity`: Humidity level measurement.
+  - `temperature`: Optional temperature reading.
 
 ## How to Use
 
-1. Run the `schema.sql` script to create the necessary tables in your database.
-2. Insert data into the tables as needed.
-3. Use SQL queries to interact with the data.
+1. **Set Up the Database**:
+   - Run the `schema.sql` script to create the necessary tables in your database.
 
-# Sample Data for Smart Air Monitoring System
+2. **Insert Sample Data**:
+   - Use the provided sample data script to populate the tables with example data.
 
-This section contains sample data for the **Smart Air Monitoring System** project, which uses gas and humidity sensors to monitor environmental conditions.
+3. **Interact with Data**:
+   - Perform SQL queries to analyze and retrieve data from the tables.
 
-## Data Overview
+## Sample Data
 
-- **Sensors Table**: Includes entries for various sensors with their names, types, and statuses.
-- **GasSensorData Table**: Contains sample readings for gas levels from different gas sensors.
-- **HumiditySensorData Table**: Includes sample readings for humidity and temperature from different humidity sensors.
+The sample data provides an example of how to populate the system for testing and demonstration purposes. It includes entries for different sensors and their recorded readings.
 
-The data provides an example of how the system can be populated and used for testing and demonstration purposes.
+- **Sensors Table**: Sample entries for gas and humidity sensors.
+- **GasSensorData Table**: Sample gas level readings.
+- **HumiditySensorData Table**: Sample humidity and temperature readings.
+
+For more details, refer to the `schema.sql` and `sample_data.sql` files.
+
